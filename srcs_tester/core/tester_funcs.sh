@@ -22,6 +22,7 @@ create_srcs_files() {
 create_char_srcs_files() {
 	rm -rf $TMP_DIR
 	mkdir -p $TMP_DIR
+	echo $2
 
 	echo -en '#include <stdio.h>\nint main(void){printf(' > $TMP_DIR/printf_tester.c
 	echo -n $1 >> $TMP_DIR/printf_tester.c
@@ -42,6 +43,32 @@ create_char_srcs_files() {
 	echo ');return (0);}' >> $TMP_DIR/ft_printf_tester.c
 
 }
+
+create_char_one_star_srcs_files() {
+	rm -rf $TMP_DIR
+	mkdir -p $TMP_DIR
+
+	echo -en '#include <stdio.h>\nint main(void){printf(' > $TMP_DIR/printf_tester.c
+	echo -n $1 >> $TMP_DIR/printf_tester.c
+	echo -n ', ' >> $TMP_DIR/printf_tester.c
+	echo -n $2 >> $TMP_DIR/printf_tester.c
+	echo -n ", '">> $TMP_DIR/printf_tester.c
+	echo -n $3 >> $TMP_DIR/printf_tester.c
+	echo -n "'" >> $TMP_DIR/printf_tester.c
+	echo ');return (0);}' >> $TMP_DIR/printf_tester.c
+
+	echo -en '#include <' > $TMP_DIR/ft_printf_tester.c
+	echo -n $HEADER_FILE >> $TMP_DIR/ft_printf_tester.c
+	echo -en '>\nint main(void){printf(' >> $TMP_DIR/ft_printf_tester.c
+	echo -n $1 >> $TMP_DIR/ft_printf_tester.c
+	echo -n ', ' >> $TMP_DIR/ft_printf_tester.c
+	echo -n $2 >> $TMP_DIR/ft_printf_tester.c
+	echo -n ", '">> $TMP_DIR/ft_printf_tester.c
+	echo -n $3 >> $TMP_DIR/ft_printf_tester.c
+	echo -n "'" >> $TMP_DIR/ft_printf_tester.c
+	echo ');return (0);}' >> $TMP_DIR/ft_printf_tester.c
+}
+
 
 compile_test() {
 	gcc $LIBRARY $TMP_DIR/printf_tester.c -o printf
@@ -81,6 +108,14 @@ launch_test() {
 
 launch_char_test() {
 	create_char_srcs_files $@
+	compile_test
+	execute_binaries
+	diff_outputs $@
+	clean
+}
+
+launch_char_one_star_test() {
+	create_char_one_star_srcs_files $@
 	compile_test
 	execute_binaries
 	diff_outputs $@
