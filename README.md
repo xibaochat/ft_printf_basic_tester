@@ -2,7 +2,7 @@
 
 ## How To
 
-Define the name of your library + header file containing the function **ft_printf** in the config file **srcs_tester/config.sh**
+###  Define the name of your library + header file containing the function **ft_printf** in the config file **srcs_tester/config.sh**
 
 Example
 ```
@@ -19,18 +19,18 @@ TMP_DIR=./tmp/
 FAILED_TESTS=failed_tests
 ```
 
-Copy your library + headerfile in the root directory.
+### Copy your library + headerfile in the root directory.
 ```
 cp /PATH/TO/libftprintf.a ./
 cp /PATH/TO/libftprintf.h ./
 ```
 
-Launch the tests:
+### Launch the tests
 ```
 bash tester.sh
 ```
 
-Check if some tests failed by looking into the file define in the variable **FAILED_TESTS**
+### Check if some tests failed by looking into the file define in the variable **FAILED_TESTS**
 ```
 cat ./failed_tests
 ```
