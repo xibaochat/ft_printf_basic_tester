@@ -16,6 +16,7 @@ source $SH_TESTS/basic_precision.sh
 source $SH_TESTS/width_with_precision.sh
 source $SH_TESTS/one_star_width.sh
 source $SH_TESTS/one_star_precision.sh
+source $SH_TESTS/double_star.sh
 
 
 #########
@@ -25,4 +26,5 @@ source $SH_TESTS/one_star_precision.sh
 #basic_precision_tests
 #width_with_precision_tests
 #one_star_width_tests
-one_star_precision_tests
+#one_star_precision_tests
+double_star_tests

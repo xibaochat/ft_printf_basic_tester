@@ -57,6 +57,17 @@ basic_number_tests() {
 # MULTIPLE FORMAT
 basic_multiple_format_tests() {
 	sub_test_banner "Multiple format"
+	launch_test '"xiao kitten %d di mao",' 42
+	launch_test '"xiao kitten %i di mao",' 42
+	launch_test '"xiao kitten %u di mao",' 42
+	launch_test '"xiao kitten %x di mao",' 42
+	launch_test '"xiao kitten %X di mao",' 42
+	launch_test '"xiao kitten %p di mao",' 42
+	launch_test '"xiao kitten %s di mao", "boid"'
+	launch_test '"xiao kitten %s di mao", ""'
+	launch_test '"xiao kitten %s di mao", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"'
+	launch_test '"xiao kitten %s di mao", NULL'
+
 }
 
 ############
@@ -68,4 +79,5 @@ basic_tests() {
 	basic_string_tests
 	basic_ptr_tests
 	basic_number_tests
+	basic_multiple_format_tests
 }
