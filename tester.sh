@@ -1,79 +1,10 @@
 #!/bin/bash
 
-source ./srcs_tester/colors.sh
+SH_SRCS=./srcs_tester/
 
-######################
-# REQUIREMENTS TESTS #
-######################
-
-LIBRARY=libftprintf.a
-HEADER_FILE=libftprintf.h
-
-if [[ ! -f $LIBRARY ]]
-then
-	echo -e "[-] ${RED}Missing library file: $LIBRARY"
-	exit
-fi
-
-if [[ ! -f "$HEADER_FILE" ]]
-then
-	echo -e "[-] ${RED}Missing header file: $HEADER_FILE"
-	exit
-fi
-
-#######################
-
-
-TMP_DIR=./tmp/
-
-create_srcs_files() {
-	rm -rf $TMP_DIR
-	mkdir -p $TMP_DIR
-
-	echo -en '#include <stdio.h>\nint main(void){printf(' > $TMP_DIR/printf_tester.c
-	echo -n $@ >> $TMP_DIR/printf_tester.c
-	echo ');return (0);}' >> $TMP_DIR/printf_tester.c
-
-	echo -en '#include <' > $TMP_DIR/ft_printf_tester.c
-	echo -n $HEADER_FILE >> $TMP_DIR/ft_printf_tester.c
-	echo -en '>\nint main(void){printf(' >> $TMP_DIR/ft_printf_tester.c
-	echo -n $@ >> $TMP_DIR/ft_printf_tester.c
-	echo ');return (0);}' >> $TMP_DIR/ft_printf_tester.c
-}
-
-compile_test() {
-	gcc $LIBRARY $TMP_DIR/printf_tester.c -o printf
-	gcc $LIBRARY $TMP_DIR/ft_printf_tester.c -I . -o ft_printf
-}
-
-execute_binaries() {
-	./printf > $TMP_DIR/printf.log
-	./ft_printf > $TMP_DIR/ft_printf.log
-}
-
-diff_outputs() {
-	echo -en "${BLUE}$@:\t${NC}"
-	diff $TMP_DIR/printf.log $TMP_DIR/ft_printf.log >/dev/null
-	if [[ $? -eq 0 ]]
-	then
-		echo -e "${GREEN}OK"
-	else
-		echo -e "${RED}FAIL"
-	fi
-}
-
-clean() {
-	rm -rf $TMP_DIR
-	rm -f printf ft_printf
-}
-
-launch_test() {
-	create_srcs_files $@
-	compile_test
-	execute_binaries
-	diff_outputs $@
-	clean
-}
+source $SH_SRCS/colors.sh
+source $SH_SRCS/tester_funcs.sh
+source $SH_SRCS/requirements_test.sh
 
 basic_tests() {
 	launch_test '"%s", "boid"'
