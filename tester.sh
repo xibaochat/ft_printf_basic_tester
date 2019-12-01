@@ -4,6 +4,7 @@ SH_CORE=./srcs_tester/core/
 SH_TESTS=./srcs_tester/tests/
 
 # SRCS CORE
+source $SH_CORE/nyan.sh
 source $SH_CORE/colors.sh
 source $SH_CORE/requirements_test.sh
 source $SH_CORE/srcs_creation.sh
@@ -26,6 +27,7 @@ source $SH_TESTS/error_management.sh
 
 #########
 # Basics
+nyan
 basic_tests
 basic_width_tests
 basic_precision_tests
