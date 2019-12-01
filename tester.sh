@@ -25,24 +25,25 @@ fi
 
 
 TMP_DIR=./tmp/
-SRCS_DIR=./srcs/
 
-copy_source_files() {
+create_srcs_files() {
 	rm -rf $TMP_DIR
 	mkdir -p $TMP_DIR
-	rm -f $TMP_DIR/ft_printf_tester.c $TMP_DIR/printf_tester.c
-	cp $SRCS_DIR/ft_printf_tester.c $TMP_DIR/
-	cp $SRCS_DIR/printf_tester.c $TMP_DIR/
-}
 
-replace_in_srcs_template() {
-	sed -i 's|TO_REPLACE|'"$@"'|g' $TMP_DIR/printf_tester.c
-	sed -i 's|TO_REPLACE|'"$@"'|g' $TMP_DIR/ft_printf_tester.c
+	echo -en '#include <stdio.h>\nint main(void){printf(' > $TMP_DIR/printf_tester.c
+	echo -n $@ >> $TMP_DIR/printf_tester.c
+	echo ');return (0);}' >> $TMP_DIR/printf_tester.c
+
+	echo -en '#include <' > $TMP_DIR/ft_printf_tester.c
+	echo -n $HEADER_FILE >> $TMP_DIR/ft_printf_tester.c
+	echo -en '>\nint main(void){printf(' >> $TMP_DIR/ft_printf_tester.c
+	echo -n $@ >> $TMP_DIR/ft_printf_tester.c
+	echo ');return (0);}' >> $TMP_DIR/ft_printf_tester.c
 }
 
 compile_test() {
 	gcc $LIBRARY $TMP_DIR/printf_tester.c -o printf
-	gcc $LIBRARY $TMP_DIR/ft_printf_tester.c -o ft_printf
+	gcc $LIBRARY $TMP_DIR/ft_printf_tester.c -I . -o ft_printf
 }
 
 execute_binaries() {
@@ -61,14 +62,56 @@ diff_outputs() {
 	fi
 }
 
-launch_test() {
-	copy_source_files
-#	replace_in_srcs_template $@
-#	compile_test
-#	execute_binaries
-#	diff_outputs $@
+clean() {
+	rm -rf $TMP_DIR
+	rm -f printf ft_printf
 }
 
-launch_test '"%s", "boid"'
+launch_test() {
+	create_srcs_files $@
+	compile_test
+	execute_binaries
+	diff_outputs $@
+	clean
+}
 
-#rm -r $TMP_DIR
+basic_tests() {
+	launch_test '"%s", "boid"'
+	launch_test '"%s", ""'
+	launch_test '"%s", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"'
+	launch_test '"%s", NULL'
+
+	launch_test '"%d", 42'
+	launch_test '"%i", 42'
+	launch_test '"%u", 42'
+	launch_test '"%x", 42'
+	launch_test '"%X", 42'
+	launch_test '"%p", 42'
+
+	launch_test '"%d", 0'
+	launch_test '"%i", 0'
+	launch_test '"%u", 0'
+	launch_test '"%x", 0'
+	launch_test '"%X", 0'
+	launch_test '"%p", 0'
+
+
+	launch_test '"%d", 2147483647'
+	launch_test '"%i", 2147483647'
+	launch_test '"%u", 2147483647'
+	launch_test '"%x", 2147483647'
+	launch_test '"%X", 2147483647'
+	launch_test '"%p", 2147483647'
+
+
+	launch_test '"%d", 2147483648'
+	launch_test '"%i", 2147483648'
+	launch_test '"%u", 2147483648'
+	launch_test '"%x", 2147483648'
+	launch_test '"%X", 2147483648'
+	launch_test '"%p", 2147483648'
+
+
+}
+
+basic_tests
