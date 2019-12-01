@@ -6,8 +6,11 @@ SH_TESTS=./srcs_tester/tests/
 # SRCS CORE
 source $SH_CORE/colors.sh
 source $SH_CORE/requirements_test.sh
+source $SH_CORE/srcs_creation.sh
 source $SH_CORE/tester_funcs.sh
+source $SH_CORE/test_launchers.sh
 source $SH_CORE/tests_banner.sh
+
 
 # SRCS TESTS
 source $SH_TESTS/basics.sh
