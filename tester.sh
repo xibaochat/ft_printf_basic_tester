@@ -1,48 +1,24 @@
 #!/bin/bash
 
-SH_SRCS=./srcs_tester/
+SH_CORE=./srcs_tester/core/
+SH_TESTS=./srcs_tester/tests/
 
-source $SH_SRCS/colors.sh
-source $SH_SRCS/tester_funcs.sh
-source $SH_SRCS/requirements_test.sh
+# SRCS CORE
+source $SH_CORE/colors.sh
+source $SH_CORE/requirements_test.sh
+source $SH_CORE/tester_funcs.sh
+source $SH_CORE/tests_banner.sh
 
-basic_tests() {
-	launch_test '"%s", "boid"'
-	launch_test '"%s", ""'
-	launch_test '"%s", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"'
-	launch_test '"%s", NULL'
-
-	launch_test '"%d", 42'
-	launch_test '"%i", 42'
-	launch_test '"%u", 42'
-	launch_test '"%x", 42'
-	launch_test '"%X", 42'
-	launch_test '"%p", 42'
-
-	launch_test '"%d", 0'
-	launch_test '"%i", 0'
-	launch_test '"%u", 0'
-	launch_test '"%x", 0'
-	launch_test '"%X", 0'
-	launch_test '"%p", 0'
+# SRCS TESTS
+source $SH_TESTS/basics.sh
+source $SH_TESTS/basic_width.sh
+source $SH_TESTS/basic_precision.sh
+source $SH_TESTS/width_with_precision.sh
 
 
-	launch_test '"%d", 2147483647'
-	launch_test '"%i", 2147483647'
-	launch_test '"%u", 2147483647'
-	launch_test '"%x", 2147483647'
-	launch_test '"%X", 2147483647'
-	launch_test '"%p", 2147483647'
-
-
-	launch_test '"%d", 2147483648'
-	launch_test '"%i", 2147483648'
-	launch_test '"%u", 2147483648'
-	launch_test '"%x", 2147483648'
-	launch_test '"%X", 2147483648'
-	launch_test '"%p", 2147483648'
-
-
-}
-
-basic_tests
+#########
+# Basics
+#basic_tests
+#basic_width_tests
+#basic_precision_tests
+width_with_precision_tests
