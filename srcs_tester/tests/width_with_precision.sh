@@ -167,7 +167,7 @@ basic_width_with_precision_str_tests() {
 	basic_width_with_precision_launcher "s" '"boid"'
 	basic_width_with_precision_launcher "s" '""'
 	basic_width_with_precision_launcher "s" '"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"'
-	basic_width_with_precision_launcher "s" 'NULL'
+#	basic_width_with_precision_launcher "s" 'NULL'
 }
 
 ###########
@@ -183,8 +183,10 @@ basic_width_with_precision_ptr_tests() {
 # MAIN FUNCTION
 
 width_with_precision_tests() {
-#	basic_width_with_precision_number_tests
-#	basic_width_with_precision_str_tests
+    test_banner "WIDTH && PRECISION"
+
+	basic_width_with_precision_number_tests
+	basic_width_with_precision_str_tests
 #	basic_width_with_precision_ptr_tests
 	basic_width_with_precision_char_tests
 }

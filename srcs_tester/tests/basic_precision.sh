@@ -113,6 +113,6 @@ basic_precision_tests() {
 
 	basic_precision_number_tests
 	basic_precision_string_tests
-	basic_precision_ptr_tests
+#	basic_precision_ptr_tests
 	basic_precision_char_tests
 }

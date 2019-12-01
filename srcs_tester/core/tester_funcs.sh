@@ -5,8 +5,8 @@ SH_SRCS=./srcs_tester/
 source $SH_SRCS/config.sh
 
 compile_test() {
-	gcc $LIBRARY $TMP_DIR/printf_tester.c -o printf
-	gcc $LIBRARY $TMP_DIR/ft_printf_tester.c -I . -o ft_printf
+	gcc $TMP_DIR/printf_tester.c $LIBRARY -o printf
+	gcc $TMP_DIR/ft_printf_tester.c $LIBRARY -I . -o ft_printf
 }
 
 execute_binaries() {
@@ -23,7 +23,7 @@ diff_outputs() {
 	else
 		echo -e "${RED}FAIL${NC}"
 		echo "$@" >> $FAILED_TESTS
-		exit
+
 	fi
 }
 

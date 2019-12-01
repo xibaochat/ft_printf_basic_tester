@@ -12,9 +12,9 @@ create_srcs_files() {
 	echo -n $@ >> $TMP_DIR/printf_tester.c
 	echo ');return (0);}' >> $TMP_DIR/printf_tester.c
 
-	echo -en '#include <' > $TMP_DIR/ft_printf_tester.c
+	echo -en '#include "' > $TMP_DIR/ft_printf_tester.c
 	echo -n $HEADER_FILE >> $TMP_DIR/ft_printf_tester.c
-	echo -en '>\nint main(void){printf(' >> $TMP_DIR/ft_printf_tester.c
+	echo -en '"\nint main(void){ft_printf(' >> $TMP_DIR/ft_printf_tester.c
 	echo -n $@ >> $TMP_DIR/ft_printf_tester.c
 	echo ');return (0);}' >> $TMP_DIR/ft_printf_tester.c
 }
@@ -31,9 +31,9 @@ create_char_srcs_files() {
 	echo -n "'" >> $TMP_DIR/printf_tester.c
 	echo ');return (0);}' >> $TMP_DIR/printf_tester.c
 
-	echo -en '#include <' > $TMP_DIR/ft_printf_tester.c
+	echo -en '#include "' > $TMP_DIR/ft_printf_tester.c
 	echo -n $HEADER_FILE >> $TMP_DIR/ft_printf_tester.c
-	echo -en '>\nint main(void){printf(' >> $TMP_DIR/ft_printf_tester.c
+	echo -en '"\nint main(void){ft_printf(' >> $TMP_DIR/ft_printf_tester.c
 	echo -n $1 >> $TMP_DIR/ft_printf_tester.c
 	echo -n ', ' >> $TMP_DIR/ft_printf_tester.c
 	echo -n "'" >> $TMP_DIR/ft_printf_tester.c
@@ -56,9 +56,9 @@ create_char_one_star_srcs_files() {
 	echo -n "'" >> $TMP_DIR/printf_tester.c
 	echo ');return (0);}' >> $TMP_DIR/printf_tester.c
 
-	echo -en '#include <' > $TMP_DIR/ft_printf_tester.c
+	echo -en '#include "' > $TMP_DIR/ft_printf_tester.c
 	echo -n $HEADER_FILE >> $TMP_DIR/ft_printf_tester.c
-	echo -en '>\nint main(void){printf(' >> $TMP_DIR/ft_printf_tester.c
+	echo -en '"\nint main(void){ft_printf(' >> $TMP_DIR/ft_printf_tester.c
 	echo -n $1 >> $TMP_DIR/ft_printf_tester.c
 	echo -n ', ' >> $TMP_DIR/ft_printf_tester.c
 	echo -n $2 >> $TMP_DIR/ft_printf_tester.c
@@ -83,9 +83,9 @@ create_char_double_star_srcs_files() {
 	echo -n "'" >> $TMP_DIR/printf_tester.c
 	echo ');return (0);}' >> $TMP_DIR/printf_tester.c
 
-	echo -en '#include <' > $TMP_DIR/ft_printf_tester.c
+	echo -en '#include "' > $TMP_DIR/ft_printf_tester.c
 	echo -n $HEADER_FILE >> $TMP_DIR/ft_printf_tester.c
-	echo -en '>\nint main(void){printf(' >> $TMP_DIR/ft_printf_tester.c
+	echo -en '"\nint main(void){ft_printf(' >> $TMP_DIR/ft_printf_tester.c
 	echo -n $1 >> $TMP_DIR/ft_printf_tester.c
 	echo -n ', ' >> $TMP_DIR/ft_printf_tester.c
 	echo -n $2 >> $TMP_DIR/ft_printf_tester.c

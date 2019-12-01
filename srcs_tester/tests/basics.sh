@@ -10,15 +10,6 @@ basic_string_tests() {
 	launch_test '"%s", NULL'
 }
 
-###########
-# POINTERS
-basic_ptr_tests() {
-	sub_test_banner "Pointers"
-	launch_test '"%p",' 0
-	launch_test '"%p",' 42
-	launch_test '"%p", NULL'
-}
-
 ########
 # CHARS
 basic_char_tests() {
@@ -62,7 +53,6 @@ basic_multiple_format_tests() {
 	launch_test '"xiao kitten %u di mao",' 42
 	launch_test '"xiao kitten %x di mao",' 42
 	launch_test '"xiao kitten %X di mao",' 42
-	launch_test '"xiao kitten %p di mao",' 42
 	launch_test '"xiao kitten %s di mao", "boid"'
 	launch_test '"xiao kitten %s di mao", ""'
 	launch_test '"xiao kitten %s di mao", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"'
@@ -77,7 +67,6 @@ basic_tests() {
 
 	basic_char_tests
 	basic_string_tests
-	basic_ptr_tests
 	basic_number_tests
 	basic_multiple_format_tests
 }

@@ -28,9 +28,9 @@ double_star_launch_tests() {
 	double_star_launch_tests_bis $1 10 $2
 	double_star_launch_tests_bis $1 20 $2
 	double_star_launch_tests_bis $1 100 $2
-	double_star_launch_tests_bis $1 -10 $2
-	double_star_launch_tests_bis $1 -20 $2
-	double_star_launch_tests_bis $1 -100 $2
+#	double_star_launch_tests_bis $1 -10 $2
+#	double_star_launch_tests_bis $1 -20 $2
+#	double_star_launch_tests_bis $1 -100 $2
 }
 
 ##########
@@ -112,7 +112,7 @@ double_star_tests() {
 	test_banner "DOUBLE STAR"
 
 	double_star_string_tests
-	double_star_ptr_tests
+#	double_star_ptr_tests
 	double_star_number_tests
 	double_star_char_launch_tests
 }

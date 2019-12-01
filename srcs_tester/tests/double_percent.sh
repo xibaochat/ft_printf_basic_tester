@@ -77,7 +77,7 @@ double_percent_tests() {
 
 	double_percent_char_tests
 	double_percent_string_tests
-	double_percent_ptr_tests
+#	double_percent_ptr_tests
 	double_percent_number_tests
 	double_percent_multiple_format_tests
 }

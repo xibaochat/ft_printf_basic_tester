@@ -3,43 +3,43 @@
 #########
 # COMMON
 error_management_launcher() {
-	FORMAT='"%.5-10$1"',
+	FORMAT="\"%.5-10$1\","
 	launch_test $FORMAT $2
 
-	FORMAT='"%**.*$1"',
+	FORMAT="\"%**.*$1\","
 	launch_test $FORMAT 42, $2
 
-	FORMAT='"%**$1"',
+	FORMAT="\"%**$1\","
 	launch_test $FORMAT 42, $2
 
-	FORMAT='"%.**$1"',
+	FORMAT="\"%.**$1\","
 	launch_test $FORMAT 42, $2
 
-	FORMAT='"%*.10*$1"',
+	FORMAT="\"%*.10*$1\","
 	launch_test $FORMAT 42, $2
 
-	FORMAT='"%*10.*$1"',
+	FORMAT="\"%*10.*$1\","
 	launch_test $FORMAT 42, $2
 }
 
 
 multi_error_management_launcher() {
-	FORMAT='"$1 %.5-10$2"',
+	FORMAT="\"$1 %.5-10$2\","
 	launch_test $FORMAT $3
 
-	FORMAT='"$1 %**.*$2"',
+	FORMAT="\"$1 %**.*$2\","
 	launch_test $FORMAT 42, $3
 
-	FORMAT='"$1 %**$2"',
+	FORMAT="\"$1 %**$2\","
 	launch_test $FORMAT 42, $3
 
-	FORMAT='"$1 %.**$2"',
+	FORMAT="\"$1 %.**$2\","
 	launch_test $FORMAT 42, $3
 
-	FORMAT='"$1 %*.10*$2"',
+	FORMAT="\"$1 %*.10*$2\","
 	launch_test $FORMAT 42, $3
 
-	FORMAT='"$1 %*10.*$2"',
+	FORMAT="\"$1 %*10.*$2\","
 	launch_test $FORMAT 42, $3
 }
 
@@ -48,7 +48,7 @@ multi_error_management_launcher() {
 # STRINGS
 error_management_string_tests() {
 	sub_test_banner "Strings"
-	error_management_launcher 's' '"boid"'
+	error_management_launcher "s" '"boid"'
 	error_management_launcher 's' '""'
 	error_management_launcher 's' '"xxxxxxxxxxxxxxxxxxxxxxx"'
 	error_management_launcher 's' 'NULL'
@@ -120,7 +120,7 @@ error_management_tests() {
 	test_banner "ERROR_MANAGEMENTS"
 
 	error_management_string_tests
-	error_management_ptr_tests
+#	error_management_ptr_tests
 	error_management_number_tests
 	error_management_multiple_format_tests
 }

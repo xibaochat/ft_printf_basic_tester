@@ -36,4 +36,5 @@ one_star_width_tests
 one_star_precision_tests
 double_star_tests
 double_percent_tests
-error_management_tests
+
+#error_management_tests

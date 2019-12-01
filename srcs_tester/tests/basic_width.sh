@@ -66,25 +66,6 @@ basic_width_string_tests() {
 	basic_width_string_tests_template '"NULL"'
 }
 
-
-##########
-# POINTER
-basic_width_ptr_tests_template() {
-	launch_test '"%0p",' $1
-	launch_test '"%1p",' $1
-	launch_test '"%2p",' $1
-	launch_test '"%5p",' $1
-	launch_test '"%10p",' $1
-	launch_test '"%20p",' $1
-}
-
-basic_width_ptr_tests() {
-	sub_test_banner "Pointers"
-	basic_width_ptr_tests_template 0
-	basic_width_ptr_tests_template 42
-	basic_width_ptr_tests_template NULL
-}
-
 ########
 # CHARS
 basic_width_char_tests_template() {
@@ -113,6 +94,5 @@ basic_width_tests() {
 
 	basic_width_number_tests
 	basic_width_string_tests
-	basic_width_ptr_tests
 	basic_width_char_tests
 }
