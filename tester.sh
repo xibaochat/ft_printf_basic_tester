@@ -21,17 +21,17 @@ source $SH_TESTS/one_star_width.sh
 source $SH_TESTS/one_star_precision.sh
 source $SH_TESTS/double_star.sh
 source $SH_TESTS/double_percent.sh
-#source $SH_TESTS/error_management.sh
+source $SH_TESTS/error_management.sh
 
 
 #########
 # Basics
-#basic_tests
-#basic_width_tests
-#basic_precision_tests
-#width_with_precision_tests
-#one_star_width_tests
-#one_star_precision_tests
-#double_star_tests
+basic_tests
+basic_width_tests
+basic_precision_tests
+width_with_precision_tests
+one_star_width_tests
+one_star_precision_tests
+double_star_tests
 double_percent_tests
-#error_management_tests
+error_management_tests
