@@ -85,6 +85,7 @@ basic_width_char_tests() {
 	basic_width_char_tests_template '2'
 	basic_width_char_tests_template '4'
 	basic_width_char_tests_template '?'
+	basic_width_char_tests_template 0
 }
 
 ############

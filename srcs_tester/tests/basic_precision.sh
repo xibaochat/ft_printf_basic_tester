@@ -104,6 +104,7 @@ basic_precision_char_tests() {
 	basic_precision_char_tests_template '2'
 	basic_precision_char_tests_template '4'
 	basic_precision_char_tests_template '?'
+	basic_precision_char_tests_template 0
 }
 
 ############

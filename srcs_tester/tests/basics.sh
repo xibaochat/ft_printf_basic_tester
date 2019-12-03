@@ -20,6 +20,7 @@ basic_char_tests() {
 	launch_char_test '"%c"' '2'
 	launch_char_test '"%c"' '4'
 	launch_char_test '"%c"' '?'
+	launch_char_test '"%c"' 0
 }
 
 ##########
